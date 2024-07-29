@@ -70,7 +70,7 @@ router.post("/sign-in", async (req: Request, res: Response) => {
       {
         email: data.email,
       },
-      process.env.PASSWORD_FOR_HASHING || ""
+      process.env.JWT_SECRET || ""
     );
     return res.status(200).json({
       token: token,
@@ -83,4 +83,4 @@ router.post("/sign-in", async (req: Request, res: Response) => {
   }
 });
 
-export default router
+export default router;

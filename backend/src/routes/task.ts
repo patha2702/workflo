@@ -1,7 +1,10 @@
 import { Router, Request, Response } from "express";
 import { taskSchema } from "../schemas/taskSchema";
+import { authMiddleware } from "../middleware/auth";
 
 const router = Router()
+
+router.use(authMiddleware)
 
 router.post("/", (req: Request, res:Response) => {
     
