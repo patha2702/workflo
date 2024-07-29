@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import userRouter from "./routes/user";
+import taskRouter from "./routes/task"
 import { getDBConnection } from "./utils/db";
 
 dotenv.config();
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/user", userRouter)
+app.use("/api/task", taskRouter)
 
 getDBConnection()
 
