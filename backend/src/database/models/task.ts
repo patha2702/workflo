@@ -1,16 +1,16 @@
 import mongoose, {Document, Schema, Model} from "mongoose";
 
-enum TaskStatus {
-    Todo="todo",
-    InProgress="inprogress",
-    UnderReview="underreview",
-    Completed="completed"
+export enum TaskStatus {
+    TODO="todo",
+    IN_PROGRESS="inprogress",
+    UNDER_REVIEW="underreview",
+    COMPLETED="completed"
 }
 
-enum PriorityStatus {
-    Low="low",
-    Medium="medium",
-    Urgent="urgent"
+export enum PriorityStatus {
+    LOW="low",
+    MEDIUM="medium",
+    URGENT="urgent"
 }
 
 interface ITask extends Document {
@@ -18,7 +18,7 @@ interface ITask extends Document {
     description ?: string
     status : TaskStatus
     priority ?: PriorityStatus
-    deadline ?: Date
+    deadline ?: Date | null
     author : Schema.Types.ObjectId
     createdAt : Date
 }
@@ -35,17 +35,19 @@ const taskSchema: Schema<ITask> = new Schema<ITask>({
     status : {
         type: String,
         enum: Object.values(TaskStatus),
-        required: true
+        required: true,
+        default: TaskStatus.TODO
     },
     priority: {
         type: String,
         enum: Object.values(PriorityStatus),
-        required: false
+        required: false,
+        default: PriorityStatus.LOW
     },
     deadline: {
         type: Date,
         required: false,
-        default: Date.now
+        default: null
     },
     author: {
         type: Schema.Types.ObjectId,
