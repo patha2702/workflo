@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cors from "cors"
 import dotenv from "dotenv";
 import userRouter from "./routes/user";
 import taskRouter from "./routes/task"
@@ -8,6 +9,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 app.use("/api/user", userRouter)
