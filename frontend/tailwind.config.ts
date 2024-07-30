@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'auth-btn-linear-gradient': 'linear-gradient(to bottom, #4C38C2 100%, #2F2188 100%, #FFFFFF 30%)',
+        'create-task-linear-gradient': 'linear-gradient(to bottom, #4C38C2 100%, #2F2188 100%)',
       },
     },
   },
